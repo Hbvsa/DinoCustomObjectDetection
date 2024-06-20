@@ -1,0 +1,14 @@
+# Ignore the virtual environment folder
+venv/
+
+# Ignore the GroundingDINO folder
+GroundingDINO/
+
+# Ignore the .idea folder (usually created by JetBrains IDEs like PyCharm)
+.idea/
+
+# Ignore the .zen folder
+.zen/
+
+# Ignore all folders inside the dataset folder
+dataset/**/
