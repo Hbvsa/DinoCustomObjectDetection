@@ -107,7 +107,7 @@ After clicking and uploading a video click Start Processing (ignore the fact the
 
 ![](Assets/detection.png)
 
-Switch back to working with zenml if you wish by running to get the right pydantic version.
+Switch back to retraining or recreating datasets if you wish by running the following command to get the right pydantic version. Else you will get a pydantic version error.
 ```
 pip install zenml
 ```
