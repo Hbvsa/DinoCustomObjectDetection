@@ -63,7 +63,7 @@ if __name__ == "__main__":
                 labels = config["labels"]
 
             self.labels = labels
-            self.dino = DinoVisionTransformerClassifier(len(labels)
+            self.dino = DinoVisionTransformerClassifier(len(labels))
             model_path = f"{dirname(abspath(__file__))}/model.pth"
             state_dict = torch.load(model_path)
             self.dino.load_state_dict(state_dict)
