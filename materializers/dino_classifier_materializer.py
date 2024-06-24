@@ -7,7 +7,7 @@ from zenml.integrations.pytorch.materializers.pytorch_module_materializer import
     PyTorchModuleMaterializer,
 )
 from zenml.io import fileio
-
+from zenml import Model
 DEFAULT_FILENAME = "obj.pt"
 import torch
 
@@ -28,7 +28,8 @@ class DinoMaterializer(PyTorchModuleMaterializer):
             A ultralytics YOLO object.
         """
         filepath = os.path.join(self.uri, DEFAULT_FILENAME)
-
+        model = Model(name="dino_classifier", description="dino classifier", version='latest')
+        classes = model.run_metadata["labels"].value
         # Create a temporary folder
         with tempfile.TemporaryDirectory(prefix="zenml-temp-") as temp_dir:
             temp_file = os.path.join(str(temp_dir), DEFAULT_FILENAME)
@@ -36,7 +37,7 @@ class DinoMaterializer(PyTorchModuleMaterializer):
             # Copy from artifact store to temporary file
             fileio.copy(filepath, temp_file)
             state_dict = torch.load(temp_file)
-            model = DinoVisionTransformerClassifier()
+            model = DinoVisionTransformerClassifier(len(classes))
             model.load_state_dict(state_dict)
             return model
 
