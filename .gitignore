@@ -12,3 +12,6 @@ GroundingDINO/
 
 # Ignore all folders inside the dataset folder
 dataset/**/
+
+.DS_Store
+**/.DS_Store
