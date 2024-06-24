@@ -95,7 +95,7 @@ python app.py
 By running the app.py it will launch a gradio app click the link to open the app in your browser.
 ![](Assets/gradio.png)
 After clicking and uploading a video click Start Processing (ignore the fact the uploaded video is not displaying). After you click processing you should see the video with the object detection box and their classes. If neither the labels achieves a logit above 0 it will say 'uknown' instead.
-![](Assets/inference.png)
+![](Assets/detection.png)
 
 Switch back to working with zenml if you wish by running to get the right pydantic version.
 ```
