@@ -43,10 +43,10 @@ if __name__ == "__main__":
     import spaces
 
     class DinoVisionTransformerClassifier(nn.Module):
-        def __init__(self):
+        def __init__(self,num_classes):
             super(DinoVisionTransformerClassifier, self).__init__()
             self.transformer = torch.hub.load("facebookresearch/dinov2", "dinov2_vits14")
-            self.classifier = nn.Sequential(nn.Linear(384, 256), nn.ReLU(), nn.Linear(256, 2))
+            self.classifier = nn.Sequential(nn.Linear(384, 256), nn.ReLU(), nn.Linear(256, num_classes))
 
         def forward(self, x):
             x = self.transformer(x)
@@ -63,7 +63,7 @@ if __name__ == "__main__":
                 labels = config["labels"]
 
             self.labels = labels
-            self.dino = DinoVisionTransformerClassifier()
+            self.dino = DinoVisionTransformerClassifier(len(labels)
             model_path = f"{dirname(abspath(__file__))}/model.pth"
             state_dict = torch.load(model_path)
             self.dino.load_state_dict(state_dict)
