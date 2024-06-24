@@ -62,9 +62,12 @@ If the class folders already have files from previous videos the code is able to
 
 ![](Assets/folder_creation.png)
 
-Although be careful to not repeat samples from the same videos.
-It should end with this message
+Although be careful to not repeat samples from the same videos. 
+
+It should end with this message.
+
 ![](Assets/data_creation_finish.png)
+
 ## Model training
 Once you have your datasets you can proceed to train the classifier model. When reading the dataset images the training dataset will double in size by applying horizontal flips to the images.
 
@@ -72,14 +75,16 @@ Once you have your datasets you can proceed to train the classifier model. When 
 python run_training.py
 ```
 
-
 ![](Assets/train_step.png)
+
 During the training script it will output accuracy metrics. In our simple example with only two classes we ran the model for a single epoch and it achieved 99% accuracy on the test videos.
 
 The training code is just a regular pytorch model training. To change the number of epochs, optimizer or anything else feel free to change the code at src/train_model.
 
 After running the training pipeline the run_training.py will also trigger the promote pipeline which will reload the model and evaluate again. By default the required accuracy for the model to be promoted is 90. You can increase or lower this threshold by changing it directly on the pipelines/promote_pipeline.py file in the promote_model function.
+
 ![](Assets/promote.png)
+
 The promotion is necessary for the deployment pipeline to have access to the model.
 The model is now saved at saved_model along with a yaml file describing the classes.
 ## Inference App
