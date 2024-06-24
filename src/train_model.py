@@ -78,7 +78,7 @@ class ModelTrainer:
 
         print(class_names)
 
-        model = DinoVisionTransformerClassifier(len(class_names)
+        model = DinoVisionTransformerClassifier(len(class_names))
 
         device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
         print("Device: ", device)
