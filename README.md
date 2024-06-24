@@ -1,6 +1,7 @@
 # Project overview
 
 ![](Assets/overview.png)
+
 The project starts by creating dataset of images from cropped objects which are detected using GroundingDINO model with a text prompt. The dataset is used to train a image classifier with our custom labels for the objects detected. Finally the purpose of the project is to do an inference composed of the GroundingDINO object detection model with the same initial text prompt combined with the trained classifier. This allows the models to detect and classify the objects observed during training with new custom labels to annotate the frames of a video.
 Future work: use the current project to automatically track objects with custom labels to apply stable diffusion for video editing
 # Setup and running instructions
