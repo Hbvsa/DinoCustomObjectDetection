@@ -124,7 +124,7 @@ class DatasetGenerator:
             if not ret:
                 break
 
-            if frame_count % 60 * 3 == 0:
+            if frame_count % (60 * 3) == 0:
                 frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
                 image_transformed = self.preprocess_image(frame_rgb)
 
