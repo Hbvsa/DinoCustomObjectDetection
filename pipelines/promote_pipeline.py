@@ -8,6 +8,7 @@ from src.train_model import ModelTrainer
 from materializers.dino_classifier_materializer import DinoMaterializer
 import yaml
 import torch
+import os
 
 model = Model(name="dino_classifier", description="dino classifier", version='latest')
 
@@ -36,6 +37,7 @@ def promote_model(accuracy: int):
 def save_model(dino_classifier: DinoVisionTransformerClassifier):
 
     model_path = "./saved_model/model.pth"
+    os.makedirs(os.path.dirname(model_path), exist_ok=True)
     torch.save(dino_classifier.state_dict(), model_path)
     classes = model.run_metadata["labels"].value
     print(classes)
