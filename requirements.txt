@@ -4,6 +4,7 @@ torchvision
 torchaudio
 
 --extra-index-url https://pypi.org/simple
+zenml
 transformers
 addict
 yapf
