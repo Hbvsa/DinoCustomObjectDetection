@@ -145,8 +145,8 @@ class DatasetGenerator:
 
     def generate_full_dataset(self):
 
-        video_files = os.listdir(self.video_path)
-
+        video_files = sorted(os.listdir(self.video_path))
+        video_files = [video_file for video_file in video_files if not video_file.startswith('.')]
         for video_file in video_files:
             parts = video_file.split('_')
             class_name = parts[0]
