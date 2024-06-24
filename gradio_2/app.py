@@ -58,13 +58,13 @@ if __name__ == "__main__":
     class ImageClassifier:
 
         def __init__(self):
-            with open(f"{dirname(abspath(__file__))}/config.yaml", 'r') as f:
+            with open("saved_model/config.yaml", 'r') as f:
                 config = yaml.load(f, Loader=yaml.FullLoader)
                 labels = config["labels"]
 
             self.labels = labels
             self.dino = DinoVisionTransformerClassifier(len(labels))
-            model_path = f"{dirname(abspath(__file__))}/model.pth"
+            model_path = "saved_model//model.pth"
             state_dict = torch.load(model_path)
             self.dino.load_state_dict(state_dict)
 
