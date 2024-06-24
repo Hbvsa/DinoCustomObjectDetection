@@ -6,6 +6,8 @@ from torch import nn
 from steps.train_model import train_model
 from src.train_model import ModelTrainer
 from materializers.dino_classifier_materializer import DinoMaterializer
+import yaml
+import torch
 
 model = Model(name="dino_classifier", description="dino classifier", version='latest')
 
