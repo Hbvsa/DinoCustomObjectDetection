@@ -29,13 +29,22 @@ def promote_model(accuracy: int):
         print(f"Current model promoted with accuracy {accuracy}")
     else:
         print(f"Current model not promoted with accuracy {accuracy}")
+        
+@step
+def save_model(dino_classifier: DinoVisionTransformerClassifier):
 
+    model_path = "./saved_model/model.pth"
+    torch.save(dino_classifier.state_dict(), model_path)
+    classes = model.run_metadata["labels"].value
+    print(classes)
+    with open('./saved_model/config.yaml', 'w') as f:
+        yaml.dump({"labels": classes}, f)
+        
 @pipeline(enable_cache=False, model=model)
 def promote_pipeline():
     dino_classifier = load_model()
-    #Check for model performance (could be done with all types of different data)
     accuracy = evaluate_model(dino_classifier)
-    #Promote to be used for deployment
     promote_model(accuracy)
+    save_model(dino_classifier)
 
 
