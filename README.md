@@ -49,7 +49,7 @@ To change the text prompt go to steps/data_creation.py and directly change it th
 The generated dataset will crop the object every 3 seconds, this is done to accelerate the process, if you want more images produced per video go to src/generate_dataset and in the generate_class_dataset method change the seconds in the if condition frame_count % (60 * seconds). It is also in this method that you can change the box and text thresholds if you wish too. The default used in the code is 0.6.
 
 
-![](Assets/frame_crop.png)
+![](Assets/frames_crop.png)
 
 Now you can run the run_data_creation.py to create the dataset.
 ```
