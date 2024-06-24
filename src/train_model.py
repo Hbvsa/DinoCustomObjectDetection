@@ -88,8 +88,6 @@ class ModelTrainer:
             running_loss = 0.0
             batch_losses = []
             for i, data in enumerate(train_loader):
-                if i >= 1000:
-                  break
 
                 # get the input batch and the labels
                 batch_of_images, labels = data
