@@ -36,6 +36,10 @@ class CustomImageDataset(Dataset):
                 self.data.append(os.path.join(class_dir, filename))
                 self.targets.append(i)
 
+        self.data = self.data * 2
+        self.targets = self.targets * 2
+        self.flip_flag = [0] * (len(self.data) // 2) + [1] * (len(self.data) // 2)
+
     def __len__(self):
         return len(self.data)
 
@@ -43,6 +47,9 @@ class CustomImageDataset(Dataset):
         img_path = self.data[idx]
         target = self.targets[idx]
         img = Image.open(img_path).convert('RGB')
+
+        if self.flip_flag[idx]:
+            img = img.transpose(Image.FLIP_LEFT_RIGHT)
 
         if self.transform:
             img = self.transform(img)
