@@ -34,15 +34,6 @@ def save_model_2():
     with open('./gradio_2/config.yaml', 'w') as f:
         yaml.dump({"labels": classes}, f)
 
-@step()
-def local_deployment():
-
-    zenml_repo_root = Client().root
-    app_path = str(os.path.join(zenml_repo_root, "gradio", "app.py"))
-    command = ["python", app_path]
-    subprocess.Popen(command)
-
-
 # Initialize logger
 logger = get_logger(__name__)
 
@@ -118,9 +109,6 @@ def deploy_to_huggingface_objected_detection_classification(
 def deployment_pipeline():
 
     #save_model()
-    #save_model_2()
-    #Check everything is working fine with the app before remote deployment
-    #local_deployment()
-    #local_deployment_2()
+    save_model_2()
     #deploy_to_huggingface_image_classification("Custom_image_classification")
     deploy_to_huggingface_objected_detection_classification("Custom_object_detection")
