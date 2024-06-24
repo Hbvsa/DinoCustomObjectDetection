@@ -10,7 +10,7 @@ from zenml.client import Client
 from zenml.logger import get_logger
 
 
-#model = Model(name="dino_classifier", description="dino classifier", version='production')
+model = Model(name="dino_classifier", description="dino classifier", version='production')
 
 @step()
 def save_model():
