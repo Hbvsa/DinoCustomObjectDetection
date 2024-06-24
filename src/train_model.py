@@ -10,10 +10,10 @@ import sys
 sys.stdin.reconfigure(encoding='utf-8')
 sys.stdout.reconfigure(encoding='utf-8')
 class DinoVisionTransformerClassifier(nn.Module):
-    def __init__(self):
+    def __init__(self,num_classes):
         super(DinoVisionTransformerClassifier, self).__init__()
         self.transformer = torch.hub.load("facebookresearch/dinov2", "dinov2_vits14")
-        self.classifier = nn.Sequential(nn.Linear(384, 256), nn.ReLU(), nn.Linear(256, 2))
+        self.classifier = nn.Sequential(nn.Linear(384, 256), nn.ReLU(), nn.Linear(256, num_classes)))
 
     def forward(self, x):
         x = self.transformer(x)
@@ -71,7 +71,7 @@ class ModelTrainer:
 
         print(class_names)
 
-        model = DinoVisionTransformerClassifier()
+        model = DinoVisionTransformerClassifier(len(class_names)
 
         device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
         print("Device: ", device)
