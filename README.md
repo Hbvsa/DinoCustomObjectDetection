@@ -33,13 +33,15 @@ The videos need to be named with the format Class_index.mp4 (the video format ca
 - lacy_0.mp4
 - lacy_1.mp4
 - jason_test.mp4
--  lacy_test.mp4
+- lacy_test.mp4
 
 The code will assume the Class is the name you want to give to the object/animal/person detected in that video. To test the accuracy of the model on a test video please provide videos with the format Class_test.mp4. 
 
 In the videos please make sure the prompt you will use to capture the desired object/animal/person will not capture other object/animal/person with the same general designation. For example, for different person scenarios, use videos of two people but in each video only the desired person appears. If not possible, remove manually the undesired images after creating the datasets.  *This is only necessary during the training/test dataset creation, obviously during inference the point is to have multiple possible object/person/animals be classified with the custom desired labels.*
 
-One general advice is that it is better to provided small videos for example 2 videos of 3 minutes for each class instead of a single long video where the person is under the same lighting and scenario. The test video should also be in a different scenario from the training videos to ensure the testing accuracy is meaningful. 
+One general advice is that it is better to provided small videos for example 2 videos of 3 minutes for each class instead of a single long video where the person is under the same lighting and scenario. The test video should also be in a different scenario from the training videos to ensure the testing accuracy is meaningful.
+
+To create a robust model one should download a dataset with a bunch of related objects and let the model also train on them as an extra class with for example label 'unknown'. These datasets are a lot easier to acquire since we do not need to anotate them. This allows the model be better at distinguish the objects in the provided videos from objects in videos outside of the train and test folders which may or not have the same objects/scenarios.
 
 In our example with the two classes 'jason' and 'lacy' we provided two 3 minute videos for each class for training and one 3 minute video for each class for testing.
 
